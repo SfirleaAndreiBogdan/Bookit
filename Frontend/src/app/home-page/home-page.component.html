@@ -1,0 +1,129 @@
+<div class="home-container">
+  <div class="section-container header-container">
+    <div class="header-image-container">
+      <div class="header-content">
+        <h1>{{ 'title' | translate }}</h1>
+        <p>{{ 'subtitle' | translate }}</p>
+      </div>
+      <div class="booking-container">
+        <div class="form-group">
+          <div class="form">
+            <app-search-bar id="search"></app-search-bar>
+            <label for="search">{{ 'search.label' | translate }}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section-container popular-container">
+      <h2 class="section-header">{{ 'popular.title' | translate }}</h2>
+      <div class="popular-grid">
+        <div class="popular-card" *ngFor="let hotel of popularHotels">
+          <a [routerLink]="['/client/booking', hotel.id]" class="hotel-link">
+            <div>
+              <div class="popular-card-header">
+                <div *ngIf="hotel.imgUrls?.length > 0" class="hotel-image">
+                    <img
+                      class="profile"
+                      [src]="
+                        hotel.imgUrls[0].startsWith('data:image')
+                          ? hotel.imgUrls[0]
+                          : 'data:image/jpeg;base64,' + hotel.imgUrls[0]
+                      "
+                      alt="Hotel Image"
+                    />
+                  </div>
+                </div>
+              <div class="hotel-header">
+                <h4>{{ hotel.name }}</h4> 
+                  <span class="room-type">{{ 'bookings.roomType' | translate }}: {{ 'RoomTypes.' + hotel.roomType | translate }}</span>
+                <div class="location-price-row">
+                  <span class="hotel-location">{{ hotel.county }}, {{ hotel.city }}</span>
+                  <div class="price">
+                    <span class="price-prefix">{{ 'start' | translate }}</span>
+                    <h4>
+                      {{ 'hotel.price' | translate:{ price: hotel.price } }}
+                    </h4>
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container popular-container">
+      <h2 class="section-header">{{ 'homeOffers.title' | translate }}</h2>
+      <div class="popular-grid">
+        <div class="popular-card" *ngFor="let offer of offers">
+            <div>
+              <div class="popular-card-header">
+                <div *ngIf="offer.roomDetails?.imgUrls?.length > 0" class="hotel-image">
+                  <img
+                    class="profile"
+                    [src]="offer.roomDetails.imgUrls[0].startsWith('data:image') 
+                              ? offer.roomDetails.imgUrls[0] 
+                              : 'data:image/jpeg;base64,' + offer.roomDetails.imgUrls[0]"
+                    alt="Offer Image"
+                  />
+                </div>
+              </div>
+              <div class="hotel-header">
+                <h4 class="hotel-name">{{ offer.roomDetails.name }}</h4>
+                <span class="room-type-offer">{{ 'bookings.roomType' | translate }}: {{ 'RoomTypes.' + offer.roomDetails.roomType | translate }}</span>
+                <div class="location-price-row">
+                  <p class="location">{{ offer.roomDetails.county }}, {{ offer.roomDetails.city }}</p>
+    
+                  <div class="offer-price">
+                    <span class="price-prefix">{{ offer.nights }} {{ 'homeOffers.nights' | translate }}</span>
+                    <h4>
+                      <span style="text-decoration: line-through; color: gray;">
+                        {{ offer.roomDetails.price * offer.nights }} {{'hotel.currency' | translate}}
+                      </span>
+                      <span style="color: red; margin-left: 8px;">
+                        {{ offer.price }} {{'hotel.currency' | translate}}
+                      </span>
+                    </h4>
+                  </div>
+                </div>
+    
+                <div style="margin-left: 1rem;">
+                  <p><strong>{{ 'homeOffers.description' | translate }}:</strong> {{ offer.description }}</p>
+                  <p><strong>{{ 'homeOffers.period' | translate }}:</strong> 
+                    {{ offer.startDate | date: 'dd/MM/yyyy' }} - {{ offer.endDate | date: 'dd/MM/yyyy' }}
+                  </p>
+                </div>
+
+                <div style="margin-left: 4rem;">
+                  <button class="reward-btn" (click)="openDialog(offer)">{{ 'homeOffers.reserveNow' | translate }}</button>
+                </div>
+
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+            
+    <section class="client">
+      <div class="section-container client-container">
+        <h2 class="section-header">{{ 'reviews.title' | translate }}</h2>
+        <div class="client-grid">
+          <div class="client-card" *ngFor="let review of clientReviews">
+            <i nz-icon nzType="message" class="custom-icon"></i>
+            <h3>{{review.clientName}}</h3>
+            <p>{{ review.review }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="reward-container">
+        <p>{{ 'rewards.text' | translate }}</p>
+        <h4>{{ 'rewards.subtitle' | translate }}</h4>
+        <button class="reward-btn" [routerLink]="['/register']">{{ 'rewards.button' | translate }}</button>
+      </div>
+    </section>
+  </div>
+</div>

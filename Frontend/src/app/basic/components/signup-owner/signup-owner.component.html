@@ -1,0 +1,109 @@
+<div class="sign-up-wrapper">
+  <div class="sign-up-container">
+    <div class="sign-up-header">
+      <h1>{{ 'signup.ownerTitle' | translate }}</h1>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.name' | translate">
+          <input 
+            nz-input 
+            type="text" 
+            [placeholder]="'signup.placeholders.firstName' | translate" 
+            formControlName="firstName" 
+            id="firstName" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.name' | translate">
+          <input 
+            nz-input 
+            type="text" 
+            [placeholder]="'signup.placeholders.lastName' | translate" 
+            formControlName="lastName" 
+            id="lastName" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.email' | translate">
+          <input 
+            nz-input 
+            type="email" 
+            [placeholder]="'signup.placeholders.email' | translate" 
+            formControlName="email" 
+            id="email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.password' | translate">
+          <input 
+            nz-input 
+            type="password" 
+            [placeholder]="'signup.placeholders.password' | translate" 
+            formControlName="password" 
+            id="password" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.passwordMismatch' | translate">
+          <input 
+            nz-input 
+            type="password" 
+            [placeholder]="'signup.placeholders.confirmPassword' | translate" 
+            formControlName="checkPassword" 
+            id="checkPassword" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.phone' | translate">
+          <input 
+            nz-input 
+            type="text" 
+            [placeholder]="'signup.placeholders.phone' | translate" 
+            formControlName="phone" 
+            id="phone" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.county' | translate">
+          <nz-select 
+            [nzPlaceHolder]="'signup.placeholders.county' | translate" 
+            formControlName="county" 
+            (ngModelChange)="onCountyChange($event)">
+            <nz-option 
+              *ngFor="let county of countriesAndCities" 
+              [nzValue]="county.county" 
+              [nzLabel]="county.county">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control nzHasFeedback [nzErrorTip]="'signup.errors.city' | translate">
+          <nz-select 
+            [nzPlaceHolder]="'signup.placeholders.city' | translate" 
+            formControlName="city" 
+            [nzDisabled]="!filteredCities.length">
+            <nz-option 
+              *ngFor="let city of filteredCities" 
+              [nzValue]="city" 
+              [nzLabel]="city">
+            </nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button class="sign-up-btn" type="submit" [nzType]="'primary'">
+        {{ 'signup.registerBtn' | translate }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="language-switcher">
+  <!-- Iconița pe care dăm click -->
+  <a nz-icon nzType="global" class="language-icon" (click)="toggleDropdown()"></a>
+
+  <!-- Dropdown -->
+  <div class="language-dropdown" *ngIf="dropdownOpen">
+    <ul>
+      <li (click)="switchLanguage('ro')">RO</li>
+      <li (click)="switchLanguage('en')">EN</li>
+    </ul>
+  </div>
+</div>

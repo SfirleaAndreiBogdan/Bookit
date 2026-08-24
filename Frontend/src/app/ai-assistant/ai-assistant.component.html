@@ -1,0 +1,30 @@
+<div class="assistant-bar">
+  <button (click)="toggleChat()">
+    <i nz-icon nzType="message" nzTheme="outline" style="margin-right: 8px;"></i> {{ 'assistant.title' | translate }}
+  </button>
+</div>
+
+<div class="chat-wrapper" [class.open]="chatOpen">
+  <div class="chat-container">
+    <div class="chat-header">
+      <span>{{ 'assistant.title' | translate }}</span>
+      <button class="close-btn" (click)="toggleChat()">✖</button>
+    </div>
+    
+    <div class="chat-messages">
+      <div *ngFor="let message of aiResponse">
+        <div class="message" [class.user]="message.isUser" [class.ai]="!message.isUser">
+          <div *ngIf="!message.isTyping">{{message.text}}</div>
+          <div *ngIf="message.isTyping" class="typing">
+            <span>●</span><span>●</span><span>●</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="input-area">
+      <textarea [(ngModel)]="userSelection"  (keydown)="onKeyDown($event)" placeholder="Scrie un mesaj..."></textarea>
+      <button (click)="sendMessage()">{{'send' | translate}}</button>
+    </div>
+  </div>
+</div>

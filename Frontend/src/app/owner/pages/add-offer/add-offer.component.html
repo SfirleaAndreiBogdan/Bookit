@@ -1,0 +1,40 @@
+<div class="admin-offers">
+    <h2>{{ 'offers.createTitle' | translate }}</h2>
+  
+    <form [formGroup]="offerForm" (ngSubmit)="createOffer()">
+  
+      <label for="price">{{ 'offers.price' | translate }}:</label>
+      <input type="number" formControlName="price" step="0.01">
+  
+      <label for="nights">{{ 'offers.nights' | translate }}:</label>
+      <input type="number" formControlName="nights">
+  
+      <label for="description">{{ 'offers.description' | translate }}:</label>
+      <textarea formControlName="description" style="width: 100%"></textarea>
+  
+      <label for="roomId">{{ 'offers.selectRoom' | translate }}:</label>
+      <select formControlName="roomId">
+        <option value="" disabled selected>{{ 'offers.selectPlaceholder' | translate }}</option>
+        <option *ngFor="let room of rooms" [value]="room.roomId">
+          {{ room.bookingName }}
+        </option>
+      </select>
+  
+      <label for="startDate">{{ 'offers.startDate' | translate }}:</label>
+      <nz-date-picker
+        formControlName="startDate"
+        nzFormat="yyyy-MM-dd"
+      ></nz-date-picker>
+  
+      <label for="endDate">{{ 'offers.endDate' | translate }}:</label>
+      <nz-date-picker
+        formControlName="endDate"
+        nzFormat="yyyy-MM-dd"
+      ></nz-date-picker>
+  
+      <button type="submit" [disabled]="offerForm.invalid">
+        {{ 'offers.createButton' | translate }}
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,65 @@
+<div *ngIf="loading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+
+<div *ngIf="booked">
+
+  <h5 *ngIf="booked.length === 0" class="booking-cta">
+    {{'bookings.noReservationYet' | translate}} <a routerLink="/bookingsPage">{{'bookings.doItNow' | translate}}</a>
+  </h5>
+
+  <nz-table
+      #basicTable
+      [nzData]="booked"
+      [nzPageSize]="5"
+      class="customPag"
+      [nzBordered]="true">
+      <thead class="head">
+          <tr>
+              <th>{{ 'bookings.table.booking' | translate }}</th>
+              <th>{{ 'bookings.table.date' | translate }}</th>
+              <th>{{ 'bookings.table.price' | translate }}</th>
+              <th>{{ 'bookings.table.status' | translate }}</th>
+              <th>{{ 'bookings.table.action' | translate }}</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let booking of basicTable.data">
+              <td>
+                <span [routerLink]="['/client/booking', booking.roomId]" class="clickable-booking-name"  [matTooltip]="'bookings.viewDetailsAbout' | translate:{ bookingName: booking.bookingName }" >
+                    {{ booking.bookingName }}
+                </span>       
+              </td>
+              <td>{{ booking.offerDetails ? (booking.offerDetails.startDate | date: 'dd-MM-yyyy') + ' - ' + (booking.offerDetails.endDate | date: 'dd-MM-yyyy') : (booking.startDate | date: 'dd-MM-yyyy') + ' - ' + (booking.endDate | date: 'dd-MM-yyyy') }}</td>
+              <td>{{ booking.offerDetails ? booking.offerDetails.price :  getTotalPrice(booking.price, booking.startDate, booking.endDate, booking.couponDetails?.discount) }} {{ 'bookings.currency' | translate }}</td>
+              <td>{{ translateStatus(booking.reservationStatus) }}</td>
+                <td *ngIf="(booking.reservationStatus || booking.offerDetails?.reservationStatus) === 'APPROVED' 
+                            || (booking.reservationStatus || booking.offerDetails?.reservationStatus) === 'PENDING'">
+                    <div class="button-container">
+                        <button
+                        class="btnR"
+                        nzSize="small"
+                        [routerLink]="['/client/review', booking.id]"
+                        *ngIf="booking.reviewStatus === 'FALSE' && isPastEndDate(booking.offerDetails?.endDate || booking.endDate)">
+                        {{ 'bookings.actions.review' | translate }}
+                        </button>
+
+                        <button
+                        class="btnCancel"
+                        *ngIf="isBookingStartDate(booking.offerDetails?.startDate || booking.startDate)"
+                        nzSize="small"
+                        (click)="cancelBooking(booking.offerDetails?.id || booking.id)">
+                        {{ 'bookings.actions.cancel' | translate }}
+                        </button>
+                    </div>
+                </td>
+          </tr>
+      </tbody>
+  </nz-table>
+
+  <h5 *ngIf="booked.length > 0" class="booking-cta">
+    {{ 'bookings.makeAnotherReservation' | translate }} <a routerLink="/bookingsPage">{{'bookings.bookNow' | translate}}</a>
+  </h5>
+
+</div>

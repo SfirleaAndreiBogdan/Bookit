@@ -1,0 +1,31 @@
+<div class="admin-coupons">
+    <h2>{{ 'coupons.createTitle' | translate }}</h2>
+
+    <form [formGroup]="couponForm" (ngSubmit)="createCoupon()">
+        <label for="user">{{ 'coupons.selectUser' | translate }}:</label>
+        <select formControlName="userId">
+            <option value="" disabled selected>{{ 'coupons.selectPlaceholder' | translate }}</option>
+            <option *ngFor="let user of users" [value]="user.id">
+                {{ user.firstName }} {{ user.lastName }}
+            </option>
+        </select>
+
+        <label for="booking">{{ 'coupons.selectLocation' | translate }}:</label>
+        <select formControlName="booking">
+            <option value="" disabled selected>{{ 'coupons.selectPlaceholder' | translate }}</option>
+            <option *ngFor="let booking of bookings" [value]="booking.id">
+                {{ booking.name }}
+            </option>
+        </select>
+
+        <label for="code">{{ 'coupons.couponCode' | translate }}:</label>
+        <input type="text" formControlName="code" [placeholder]="'coupons.codePlaceholder' | translate">
+
+        <label for="discount">{{ 'coupons.discount' | translate }} (%):</label>
+        <input type="number" formControlName="discount" (keydown)="blockNegative($event)">
+
+        <button type="submit" [disabled]="couponForm.invalid">
+            {{ 'coupons.createButton' | translate }}
+        </button>
+    </form>
+</div>

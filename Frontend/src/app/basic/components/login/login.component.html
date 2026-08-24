@@ -1,0 +1,52 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <div class="login-header">
+      <h1>{{ 'login.welcome' | translate }}</h1>
+      <p>{{ 'login.subtitle' | translate }}</p>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-control nzHasFeedback [nzErrorTip]="'login.errors.email' | translate">
+          <nz-input-group nzPrefixIcon="mail-o">
+            <input
+              nz-input
+              allowClear
+              type="text"
+              [placeholder]="'login.placeholders.email' | translate"
+              formControlName="userName"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzHasFeedback [nzErrorTip]="'login.errors.password' | translate">
+          <nz-input-group nzPrefixIcon="lock">
+            <input
+              nz-input
+              type="password"
+              [placeholder]="'login.placeholders.password' | translate"
+              formControlName="password"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <div class="forgot-password">
+        <a routerLink="/forgot-password">{{ 'login.forgotPassword' | translate }}</a>
+      </div>
+
+      <button nz-button nzType="primary" class="login-btn">
+        {{ 'login.loginBtn' | translate }}
+      </button>
+
+      <div class="register-link">
+        <p>
+          {{ 'login.noAccount' | translate }}
+          <a routerLink="/register">{{ 'login.registerLink' | translate }}</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

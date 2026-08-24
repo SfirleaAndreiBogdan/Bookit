@@ -1,0 +1,132 @@
+<div class="content">
+    <div class="cards">
+        <div class="card">
+            <div class="box">
+                <h1>{{ bookingsCount }}</h1>
+                <h3>{{ 'companyDashboard.cards.totalBookings' | translate }}</h3>
+            </div>
+            <div class="icon-case">
+                <i nz-icon nzType="book"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="box">
+                <h1>{{ 'companyDashboard.currency' | translate }} {{ totalRevenue | number:'1.1-2' }}</h1>
+                <h3>{{ 'companyDashboard.cards.totalRevenue' | translate }}</h3>
+            </div>
+            <div class="icon-case">
+                <i nz-icon nzType="bank"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="box">
+                <h1>{{ pendingRequests }}</h1>
+                <h3>{{ 'companyDashboard.cards.pendingRequests' | translate }}</h3>
+            </div>
+            <div class="icon-case">
+                <i nz-icon nzType="hourglass"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-2">
+    <div class="table_bookings">
+        <div class="title">
+            <h2>{{ 'companyDashboard.bookings' | translate }}</h2>
+        </div>
+        <nz-table
+  #basicTable
+  *ngIf="bookings"
+  [nzData]="bookings"
+  [nzBordered]="true"
+  class="customPag"
+  [nzPaginationPosition]="'bottom'"
+  [nzPageSize]="5"
+>
+  <thead>
+    <tr class="head">
+      <th>{{ 'companyDashboard.clientName' | translate }}</th>
+      <th>{{ 'companyDashboard.booking' | translate }}</th>
+      <th>{{ 'companyDashboard.price' | translate }}</th>
+      <th>{{ 'companyDashboard.date' | translate }}</th>
+      <th>{{ 'companyDashboard.status' | translate }}</th>
+      <th>{{ 'companyDashboard.actions' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr class="body" *ngFor="let booking of basicTable.data">
+    <td>{{ booking.clientName }}</td>
+    <td>{{ booking.bookingName }}</td>
+    <td>{{ booking.price }} {{ 'companyDashboard.currency' | translate }}</td>
+    <td>{{ booking.startDate }} - {{ booking.endDate }}</td>
+    <td>{{ translateStatus(booking.reservationStatus) }}</td>
+    <td>
+      <span *ngIf="booking.reservationStatus === 'PENDING'">
+        <div class="button-container">
+          <button class="btnG" (click)="changeStatus(booking.id, 'Approve')">
+            {{ 'companyDashboard.approve' | translate }}
+          </button>
+          <button class="btnR" (click)="changeStatus(booking.id, 'Reject')">
+            {{ 'companyDashboard.reject' | translate }}
+          </button>
+        </div>
+      </span>
+    </td>
+  </tr>
+</tbody>
+</nz-table>
+
+    </div>
+
+    <div class="table-chart">
+        <div class="title-chart-table">
+            <h2>{{ 'companyDashboard.charts.rentPercentage' | translate }}</h2>
+        </div>
+        <ngx-charts-pie-chart 
+            [results]="occupancyData" 
+            [legend]="false" 
+            [labels]="true" 
+            [scheme]="'vivid'"
+            [view]="[500, 500]">
+        </ngx-charts-pie-chart>
+    </div>
+</div>
+
+<div class="charts">
+    <div class="chart">
+        <div class="title-chart">
+            <h2>{{ 'companyDashboard.charts.monthlyRevenue' | translate }}</h2>
+        </div>
+        <ngx-charts-bar-vertical 
+            [results]="monthlyRevenue" 
+            [xAxis]="true" 
+            [yAxis]="true" 
+            [legend]="false"
+            [showXAxisLabel]="true" 
+            [showYAxisLabel]="true" 
+            [xAxisLabel]="'companyDashboard.month' | translate"
+            [yAxisLabel]="getRevenueYAxisLabel()"
+            [scheme]="'vivid'">
+        </ngx-charts-bar-vertical>
+    </div>
+
+    <div class="chart">
+        <div class="title-chart">
+            <h2>{{ 'companyDashboard.charts.monthlyBookings' | translate }}</h2>
+        </div>
+        <ngx-charts-bar-vertical 
+            [results]="monthlyBookings" 
+            [xAxis]="true" 
+            [yAxis]="true" 
+            [legend]="false"
+            [showXAxisLabel]="true" 
+            [showYAxisLabel]="true" 
+            [xAxisLabel]="'companyDashboard.numBookings' | translate"
+            [yAxisLabel]="'companyDashboard.month' | translate"
+            [scheme]="'vivid'">
+        </ngx-charts-bar-vertical>
+    </div>
+</div>

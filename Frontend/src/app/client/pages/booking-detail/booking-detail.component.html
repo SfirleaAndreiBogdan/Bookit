@@ -1,0 +1,126 @@
+  <div *ngIf="isLoading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+  
+  <div *ngIf="!isLoading" ngSkipGydratt>
+    <div class="bg" *ngIf="room">
+      <div class="container">
+  
+        <section class="container-imgs">
+          <nz-carousel
+            [nzEffect]="'scrollx'"
+            [nzAutoPlay]="true"
+            [nzAutoPlaySpeed]="3000"
+            *ngIf="isBrowser && imagePrivide.length > 0">
+            <div *ngFor="let image of imagePrivide" nz-carousel-content>
+              <img [src]="image" alt="Image">
+            </div>
+          </nz-carousel>
+        </section>
+  
+        <section class="details-booking-container">
+          <div class="details">
+            <div class="room-header">
+              <h2>{{ room.name }}</h2>
+              <span class="room-type">
+                {{ 'bookings.roomType' | translate }}: {{ 'RoomTypes.' + room.roomType | translate }}
+              </span>
+            </div>
+  
+            <p>{{ room.description }}</p>
+  
+            <div class="facilities-list" *ngIf="room.facilityDetails && room.facilityDetails.length > 0">
+              <h3>{{ 'bookings.facilities' | translate }}</h3>
+              <ul>
+                <li *ngFor="let facility of room.facilityDetails">
+                  <b>{{ translateFacility(facility.name) }}</b>: {{ translateFacilityDescription(facility.description) }}
+                </li>
+              </ul>
+            </div>
+            
+  
+            <p>{{ 'booking.companyName' | translate }}:
+              <b>{{ room.company.companyName }}</b>
+            </p>
+          </div>
+  
+          <div class="booking-container">
+            <h2>{{ 'booking.bookRoom' | translate }}</h2>
+            <form nz-form="nz-form" [formGroup]="validateForm">
+  
+              <nz-form-item>
+                <nz-form-label [nzSpan]="24" nzFor="dateRange">
+                  {{ 'booking.chooseBookingDates' | translate }}
+                </nz-form-label>
+                <nz-form-control [nzSpan]="24">
+                  <nz-range-picker formControlName="dateRange" [nzSize]="'large'" nzFormat="dd-MM-yyyy" [nzDisabledDate]="disabledDate"></nz-range-picker>
+                </nz-form-control>
+              </nz-form-item>
+  
+              <nz-form-item>
+                <nz-form-control [nzSpan]="24">
+                  <div *ngIf="filteredCoupons.length > 0; else noCoupons">
+                    <nz-form-label [nzSpan]="24" nzFor="coupon">
+                      {{ 'booking.couponQuestion' | translate }}
+                    </nz-form-label>
+  
+                    <select formControlName="couponDetails">
+                       <option [ngValue]="null" disabled selected>
+                          {{ 'booking.selectCoupon' | translate }}
+                        </option>
+                      <option *ngFor="let coupon of userCoupons" [ngValue]="coupon">
+                        {{ coupon.code }}
+                      </option>
+                    </select>
+  
+                    <p class="warning-message" *ngIf="!validateForm.get('dateRange')?.value">
+                      {{ 'booking.discountAfterDateSelection' | translate }}
+                    </p>
+                    <p>{{ 'booking.priceWithDiscount' | translate }}:
+                      {{ finalPrice }} RON
+                    </p>
+                  </div>
+  
+                  <ng-template #noCoupons>
+                    <span class="no-coupons-message">{{ 'booking.noCouponsMessage' | translate }}</span>
+                    <p>{{ 'booking.initialPrice' | translate }}:
+                      {{ finalPrice }} RON
+                    </p>
+                  </ng-template>
+                </nz-form-control>
+              </nz-form-item>
+  
+              <button
+                class="btn-book"
+                nz-button="nz-button"
+                [disabled]="validateForm.invalid"
+                (click)="bookService()">{{ 'booking.bookButton' | translate }}</button>
+            </form>
+          </div>
+        </section>
+  
+        <div class="reviews-container">
+          <h2>{{ 'booking.reviews' | translate }}</h2>
+          <div *ngIf="reviews.length > 0; else noReviews">
+            <div class="review" *ngFor="let review of reviews">
+              <p>{{ 'review.review' | translate }}:
+                <strong>{{ review.review }}</strong>
+              </p>
+              <div>
+                  {{ 'review.rating' | translate }}:
+                  <nz-rate disabled="disabled" [ngModel]="review.rating"></nz-rate>
+              </div>
+              <p>{{ 'review.postedOn' | translate }}:
+                <strong>{{ review.reviewDate | date:'dd/MM/yyyy' }}</strong>
+              </p>
+            </div>
+          </div>
+          <ng-template #noReviews>
+            <p class="no-reviews">{{ 'booking.noReviews' | translate }}</p>
+          </ng-template>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

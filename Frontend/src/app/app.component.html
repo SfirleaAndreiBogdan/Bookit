@@ -1,0 +1,97 @@
+<nz-header class="main-header">
+  <div class="logo">
+    <h2 style="color:aliceblue; cursor: pointer;" routerLink="/">Bookit</h2>
+  </div>
+  <div class="searchBar">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class="nav-links">
+    <app-language-switcher></app-language-switcher>
+  </div>
+  <div class="action">
+    <div class="profile" (click)="toggleMenu()">
+      <nz-avatar nzIcon="user"></nz-avatar>
+    </div>
+    <div *ngIf="menuOpen" class="menu">
+      <ul>
+        <ng-container *ngIf="!companyLoggedIn && !clientLoggedIn && !ownerLoggedIn">
+          <li nz-icon nzType="calendar" routerLink="/bookingsPage">{{ 'bookingsPageMessage' | translate }}</li>
+          <li nz-icon nzType="user-add" routerLink="/register">{{ 'header.register' | translate }}</li>
+          <li nz-icon nzType="login" routerLink="/login">{{ 'header.login' | translate }}</li>
+        </ng-container>
+
+        <ng-container *ngIf="clientLoggedIn">
+          <li nz-icon nzType="user" routerLink="/client/dashboard">{{ 'header.profile' | translate }}</li>
+          <li nz-icon nzType="calendar" routerLink="/bookingsPage">{{ 'bookingsPageMessage' | translate }}</li>
+          <li nz-icon nzType="book" routerLink="/client/myBookings">{{ 'header.myBookings' | translate }}</li>
+          <li nz-icon nzType="logout" (click)="logout()">{{ 'header.logout' | translate }}</li>
+        </ng-container>
+
+        <ng-container *ngIf="companyLoggedIn">
+          <li nz-icon nzType="user" nzTheme="outline" routerLink="/company/dashboard">{{ 'header.dashboard' | translate }}</li>
+          <li nz-icon nzType="home" routerLink="/company/booking">{{ 'header.registerResidence' | translate }}</li>
+          <li nz-icon nzType="book" routerLink="/company/posts">{{ 'header.bookingsPosted' | translate }}</li>
+          <li nz-icon nzType="gift" routerLink="/company/coupons">{{ 'header.giveCoupons' | translate }}</li>
+          <li nz-icon nzType="tag" routerLink="/company/offers">{{ 'header.addOffer' | translate }}</li>
+          <li nz-icon nzType="setting" routerLink="/company/offers/manage">{{ 'header.manageOffer' | translate }}</li>
+          <li nz-icon nzType="logout" (click)="logout()">{{ 'header.logout' | translate }}</li>
+        </ng-container>
+
+        <ng-container *ngIf="ownerLoggedIn">
+          <li nz-icon nzType="user" nzTheme="outline" routerLink="/owner/dashboard">{{ 'header.dashboard' | translate }}</li>
+          <li nz-icon nzType="home" routerLink="/owner/booking">{{ 'header.registerResidence' | translate }}</li>
+          <li nz-icon nzType="book" routerLink="/owner/posts">{{ 'header.bookingsPosted' | translate }}</li>
+          <li nz-icon nzType="gift" routerLink="/owner/coupons">{{ 'header.giveCoupons' | translate }}</li>
+          <li nz-icon nzType="tag" routerLink="/owner/offers">{{ 'header.addOffer' | translate }}</li>
+          <li nz-icon nzType="setting" routerLink="/owner/offers/manage">{{ 'header.manageOffer' | translate }}</li>
+          <li nz-icon nzType="logout" (click)="logout()">{{ 'header.logout' | translate }}</li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nz-header>
+
+<div class="main-content">
+  <router-outlet></router-outlet>
+  <app-ai-assistant></app-ai-assistant>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h1>{{ 'description.title' | translate }}</h1>
+      <p>{{ 'description.text1' | translate }}</p>
+      <p>{{ 'description.text2' | translate }}</p>
+    </div>
+    <div class="footer-col">
+      <h4>{{ 'company.title' | translate }}</h4>
+      <ul>
+        <li><a href="#">{{ 'company.about' | translate }}</a></li>
+        <li><a href="#">{{ 'company.team' | translate }}</a></li>
+        <li><a href="#">{{ 'company.blog' | translate }}</a></li>
+        <li><a href="#">{{ 'company.book' | translate }}</a></li>
+        <li><a href="#">{{ 'company.contact' | translate }}</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>{{ 'legal.title' | translate }}</h4>
+      <ul>
+        <li><a href="#">{{ 'legal.faqs' | translate }}</a></li>
+        <li><a href="#">{{ 'legal.terms' | translate }}</a></li>
+        <li><a href="#">{{ 'legal.privacy' | translate }}</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-col">
+      <h4>{{ 'resources.title' | translate }}</h4>
+      <ul>
+        <li><a href="#">{{ 'resources.socialMedia' | translate }}</a></li>
+        <li><a href="#">{{ 'resources.helpCenter' | translate }}</a></li>
+        <li><a href="#">{{ 'resources.partnerships' | translate }}</a></li>
+        <li><a (click)="openReviewDialog()">{{ 'resources.reviewDialog' | translate }}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bar"> {{ 'copyright' | translate }}</div>
+</footer>

@@ -1,0 +1,81 @@
+<div class="sign-up-wrapper">
+    <div class="sign-up-container">
+      <h2>{{'manage_offers.updateOffer' | translate}}</h2>
+      
+      <form *ngIf="offerForm" [formGroup]="offerForm" (ngSubmit)="onSubmit()">
+        
+        <div class="form-group">
+          <label for="price">{{ 'homeOffers.price' | translate }}:</label>
+          <input
+            type="number"
+            id="price"
+            formControlName="price"
+            class="form-control"
+            required
+          />
+          <div *ngIf="offerForm.get('price').invalid && offerForm.get('price').touched" class="error-message">
+            <small>{{ 'homeOffers.priceError' | translate }}</small>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="nights">{{ 'homeOffers.nights' | translate }}:</label>
+          <input
+            type="number"
+            id="nights"
+            formControlName="nights" 
+            class="form-control"
+            required
+          />
+          <div *ngIf="offerForm.get('nights').invalid && offerForm.get('nights').touched" class="error-message">
+            <small>{{ 'homeOffers.nightsError' | translate }}</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="description">{{ 'homeOffers.description' | translate }}:</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            class="form-control"
+            required
+          ></textarea>
+          <div *ngIf="offerForm.get('description').invalid && offerForm.get('description').touched" class="error-message">
+            <small>{{ 'homeOffers.descriptionError' | translate }}</small>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label for="startDate">{{ 'homeOffers.period' | translate }}:</label>
+          <div class="date-range">
+            <input
+              type="date"
+              id="startDate"
+              formControlName="startDate"
+              class="form-control"
+              required
+            />
+            <span>-</span>
+            <input
+              type="date"
+              id="endDate"
+              formControlName="endDate"
+              class="form-control"
+              required
+            />
+          </div>
+          <div *ngIf="offerForm.get('startDate').invalid && offerForm.get('startDate').touched" class="error-message">
+            <small>{{ 'homeOffers.startDateError' | translate }}</small>
+          </div>
+          <div *ngIf="offerForm.get('endDate').invalid && offerForm.get('endDate').touched" class="error-message">
+            <small>{{ 'homeOffers.endDateError' | translate }}</small>
+          </div>
+        </div>
+      
+        <button type="submit" [disabled]="offerForm.invalid" class="btn sign-up-btn btn-primary">
+          {{'manage_offers.saveChanges' | translate}}
+        </button>
+      </form>
+    </div>
+  </div>
+  

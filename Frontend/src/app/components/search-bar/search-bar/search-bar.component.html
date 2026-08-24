@@ -1,0 +1,95 @@
+<i nz-icon nzType="search" class="iconSearch" (click)="toggleSearchBar()">{{ 'searchBooking' | translate }}</i>
+
+<div [class.open]="searchBarVisible" class="search-bar">
+
+  <span class="switch-label">{{ 'searchByName' | translate }}</span>
+
+  <label class="switch">
+    <input type="checkbox" [(ngModel)]="searchByNameOnly">
+    <span class="slider"></span>
+  </label>
+
+  <div *ngIf="searchByNameOnly" class="search-name">
+    <input type="text" [(ngModel)]="roomName" placeholder="{{ 'roomNamePlaceholder' | translate }}">
+  </div>
+
+  <ng-container *ngIf="!searchByNameOnly">
+
+    <select [(ngModel)]="selectedCounty" (change)="onCountyChange()">
+      <option value="" disabled selected>{{ 'selectCounty' | translate }}</option>
+      <option *ngFor="let county of countiesWithCities" [ngValue]="county">
+        {{ county.county }}
+      </option>
+    </select>
+
+    <select [(ngModel)]="selectedCity" [disabled]="!selectedCounty">
+      <option value="" disabled selected>{{ 'selectCity' | translate }}</option>
+      <option *ngFor="let city of filteredCities" [ngValue]="city">
+        {{ city.name }}
+      </option>
+    </select>
+
+    <input type="text" readonly [(ngModel)]="guestsText" (click)="detailsVisible = !detailsVisible" placeholder="{{ 'guestsText' | translate }}">
+
+    <div *ngIf="detailsVisible" class="details-section">
+      <div class="centered-fields">
+        <div class="guests">
+          <label>{{ 'adults' | translate }}</label>
+          <button class="small-button" (click)="decreaseAdults()">-</button>
+          <span>{{ numAdults }}</span>
+          <button class="small-button" (click)="increaseAdults()">+</button>
+        </div>
+      
+        <div class="guests">
+          <label>{{ 'children' | translate }}</label>
+          <button class="small-button" (click)="decreaseChildren()">-</button>
+          <span>{{ numChildren }}</span>
+          <button class="small-button" (click)="increaseChildren()">+</button>
+        </div>
+
+        <div class="guests">
+          <label>{{ 'rooms' | translate }}</label>
+          <button class="small-button" (click)="decreaseRooms()">-</button>
+          <span>{{ numRooms }}</span>
+          <button class="small-button" (click)="increaseRooms()">+</button>
+        </div>
+      </div>
+
+      <div class="pets">
+        <p>{{ 'petsQuestion' | translate }}</p>
+        <input type="checkbox" [(ngModel)]="withPet">
+        <p>
+          {{ 'assistanceAnimalsInfo' | translate }} 
+          <a [href]="dogAssistent">{{ 'assistanceAnimalsLinkText' | translate }}</a>
+        </p>
+      </div>
+
+      <button class="border-button" (click)="confirm()">{{ 'done' | translate }}</button>
+    </div>
+
+  </ng-container>
+
+  <nz-date-picker 
+    class="date-picker" 
+    [(ngModel)]="startDate" 
+    [nzDisabledDate]="disabledStartDate" 
+    nzRange 
+    [nzPlaceHolder]="'Check-in'" 
+    nzFormat="dd-MM-yyyy" 
+    (click)="$event.stopPropagation()">
+  </nz-date-picker>
+
+  <nz-date-picker 
+    class="date-picker" 
+    [(ngModel)]="endDate" 
+    [nzDisabledDate]="disabledEndDate" 
+    nzRange 
+    [nzPlaceHolder]="'Check-out'" 
+    nzFormat="dd-MM-yyyy" 
+    (click)="$event.stopPropagation()">
+  </nz-date-picker>
+
+  <button class="border-button" type="submit" (click)="search()">
+    {{ 'searchButton' | translate }}
+  </button>
+</div>

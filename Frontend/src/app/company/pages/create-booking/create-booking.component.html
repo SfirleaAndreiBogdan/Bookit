@@ -1,0 +1,160 @@
+<div class="sign-up-wrapper">
+  <div class="sign-up-container">
+    <div class="sign-up-header">
+      <h1>{{ 'createBooking.createTitle' | translate }}</h1>
+    </div>
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="createBooking()">
+      <div nz-row>
+        <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+          <div class="image">
+            <div *ngFor="let img of imagePrivide; let i = index">
+              <img class="profile" [src]="img" [alt]="'createBooking.imageAlt' | translate" (click)="deleteImage(i)"/>
+            </div>
+
+            <input
+              #fileInput 
+              type="file" 
+              nz-button 
+              nzType="primary" 
+              [accept]="'image/x-png,image/gif,image/jpeg,image/jpg'" 
+              (change)="onFileSelected($event)" 
+              multiple
+            />
+            <button nz-button nzShape="circle"></button>
+          </div>
+        </div>
+      </div>
+
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <input 
+            nz-input 
+            [placeholder]="'createBooking.titlePlaceholder' | translate" 
+            formControlName="name" 
+            id="name" 
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <input 
+            nz-input 
+            [placeholder]="'createBooking.pricePlaceholder' | translate" 
+            formControlName="price" 
+            id="price" 
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <textarea 
+            nz-input 
+            [placeholder]="'createBooking.descriptionPlaceholder' | translate" 
+            formControlName="description" 
+            id="description"
+          ></textarea>
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item class="input-item">
+        <select id="roomType" formControlName="selectedRoomType">
+          <option value="" disabled selected>{{'selectRoomType' | translate}}</option>
+          <option *ngFor="let roomType of roomTypes" [value]="roomType">
+            {{ 'RoomTypes.' + roomType | translate }}
+          </option>
+        </select>
+      </nz-form-item>
+
+
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <nz-select formControlName="facilities" nzMode="multiple" nzAllowClear nzPlaceHolder="Selectează facilități">
+            <nz-option *ngFor="let facility of facilities" [nzValue]="facility.id" [nzLabel]="translateFacility(facility.name)"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>      
+      
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <select formControlName="selectedCounty" (change)="onCountyChange()">
+            <option value="" disabled selected>{{ 'selectCounty' | translate }}</option>
+            <option *ngFor="let county of countiesWithCities" [ngValue]="county">
+              {{ county.county }}
+            </option>
+          </select>
+        </nz-form-control>
+      </nz-form-item>
+      
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <select formControlName="selectedCity">
+            <option value="" disabled selected>{{ 'selectCity' | translate }}</option>
+            <option *ngFor="let city of filteredCities" [ngValue]="city">
+              {{ city.name }}
+            </option>
+          </select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-label>{{ 'createBooking.adultsLabel' | translate }}</nz-form-label>
+        <nz-form-control>
+          <input 
+            nz-input 
+            type="number" 
+            formControlName="numberOfAdults" 
+            id="numberOfAdults" 
+            [min]="1" 
+            [max]="30"
+            [placeholder]="'createBooking.numberPlaceholder' | translate"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      
+      <nz-form-item class="input-item">
+        <nz-form-label>{{ 'createBooking.childrenLabel' | translate }}</nz-form-label>
+        <nz-form-control>
+          <input 
+            nz-input 
+            type="number" 
+            formControlName="numberOfChildren" 
+            id="numberOfChildren" 
+            [min]="1" 
+            [max]="30"
+            [placeholder]="'createBooking.numberPlaceholder' | translate"
+          />
+        </nz-form-control>
+      </nz-form-item>
+      
+      <nz-form-item class="input-item">
+        <nz-form-label>{{ 'createBooking.roomsLabel' | translate }}</nz-form-label>
+        <nz-form-control>
+          <input 
+            nz-input 
+            type="number" 
+            formControlName="numberOfRooms" 
+            id="numberOfRooms" 
+            [min]="1" 
+            [max]="30"
+            [placeholder]="'createBooking.numberPlaceholder' | translate"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="input-item">
+        <nz-form-control>
+          <label nz-checkbox formControlName="petAllowed">
+            {{ 'createBooking.petsAllowed' | translate }}
+          </label>
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button class="sign-up-btn" type="submit" [nzType]="'primary'">
+        {{ 'createBooking.createButton' | translate }}
+      </button>
+    </form>
+  </div>
+</div>

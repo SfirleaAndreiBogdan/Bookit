@@ -1,0 +1,98 @@
+.booking-offer-dialog-content {
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .booking-offer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .booking-offer-info .info-box {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .booking-offer-info .info-box label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+  }
+  
+  .booking-offer-info .info-box div {
+    font-size: 15px;
+    color: #333;
+  }
+  
+  
+  .booking-offer-info .info-box.no-label {
+    background: none;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .booking-offer-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .booking-offer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 16px;
+  }
+  
+  .booking-offer-actions button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .booking-offer-actions button[mat-button] {
+    border: 1px solid #d9d9d9;
+    color: #595959;
+  }
+  
+  .booking-offer-actions button[mat-button]:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .booking-offer-actions button[mat-raised-button] {
+    background-color: #1890ff;
+    color: white;
+  }
+  
+  .booking-offer-actions button[mat-raised-button]:hover {
+    background-color: #40a9ff;
+  }
+  
+  .booking-offer-actions button[mat-raised-button]:disabled {
+    background-color: #f5f5f5;
+    color: #bfbfbf;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .booking-offer-dialog-content {
+      width: 90vw;
+      padding: 16px;
+    }
+  }
+  

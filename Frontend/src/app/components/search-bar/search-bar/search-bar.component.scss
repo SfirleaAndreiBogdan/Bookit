@@ -1,0 +1,227 @@
+  .search-bar {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 60px;
+    left: 34%;
+    background-color: aliceblue;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 40px;
+    z-index: 1000;
+    transition: all 0.3s ease-in;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .search-bar.open {
+    display: flex;
+    margin-top: 10px;
+    opacity: 1;
+  }
+
+  .search-bar.closed {
+    opacity: 0;  
+  }
+
+  .iconSearch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: aliceblue;
+    text-decoration: none;
+    padding: 10px;
+    border: 2px solid aliceblue;
+    border-radius: 15px;
+    gap: 8px;
+    transition: color 0.3s ease-in, background-color 0.3s ease;
+  }
+
+  .iconSearch:hover {
+    color: #fff;  
+    background-color: #1890FF;
+  }
+
+  .search-bar select,
+  .search-bar input,
+  .ant-picker {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #001529;
+    width: 100%;
+    min-width: 150px;
+    cursor: pointer;
+  }
+
+  .search-bar .border-button {
+    background-color: transparent;
+    color: #2c3855;
+    font-weight: bold;
+    border: 1px solid #001529;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-bar .border-button:hover {
+    background-color: #40a9ff;
+    color: #2c3855;
+    font-weight: bold;
+  }
+
+  .search-bar .details-section {
+    background-color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .details-section {
+    background-color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+  }
+
+
+  .centered-fields {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .guests {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 150px; 
+    color: #001529;
+  }
+
+  .guests label {
+    font-weight: bold;
+    color: #001529;
+  }
+
+  .guests button.small-button {
+    background-color: transparent;
+    color: #001529;
+    border: 1px solid #001529;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .guests button.small-button:hover {
+    background-color: #001529;
+    color: white;
+  }
+
+  .pets {
+    display: block;
+    align-items: center;
+    gap: 10px;
+    color: #001529;
+    text-align: center;
+  }
+
+  .pets input[type="checkbox"] {
+    transform: scale(1.5);
+  }
+
+  .pets p {
+    font-size: 14px;
+    color: #001529;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    bottom: 10px;
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 20px;
+    }
+
+    .slider::before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #1890ff;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(20px);
+    }
+    .switch-label {
+      margin-left: 10px;
+      user-select: none;
+    }
+  }
+
+  .search-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+
+    input {
+      width: 100%;
+      max-width: 450px;
+
+      padding: 0.6rem 1rem;
+      font-size: 16px;
+      line-height: 1.2;
+      border: 1px solid;
+      border-radius: 6px;
+      height: auto;             
+      box-sizing: border-box;
+
+    }
+  }

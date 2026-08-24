@@ -1,0 +1,29 @@
+<div mat-dialog-content class="review-dialog-content">
+  <h2>{{ 'feedback' | translate }}</h2>
+  <form [formGroup]="validateForm" (ngSubmit)="giveReview()" class="review-form">
+    
+    <nz-form-item class="form-item">
+      <nz-form-control nzHasFeedback nzErrorTip="{{ 'validation.invalidName' | translate }}">
+        <textarea
+          nz-input
+          class="review-textarea"
+          placeholder="{{ 'review.placeholder' | translate }}"
+          formControlName="review"
+          rows="4">
+        </textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item class="form-item rating-item">
+      <nz-form-control nzHasFeedback>
+        <nz-rate formControlName="rating" [nzTooltips]="[ 'review.rating' | translate ]"></nz-rate>
+      </nz-form-control>
+    </nz-form-item>
+
+    <div class="dialog-actions">
+      <button mat-button mat-dialog-close (click)="onNoClick()">{{'cancel' | translate}}</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="validateForm.invalid"> {{ 'review.postButton' | translate }} </button>
+    </div>
+
+  </form>
+</div>

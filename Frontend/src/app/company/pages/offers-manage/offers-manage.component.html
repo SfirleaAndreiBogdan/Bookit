@@ -1,0 +1,59 @@
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 2rem 0; margin-left: 2rem;">
+  <h2 style="margin: 0;">{{ 'manage_offers.title' | translate }}</h2>
+</div>
+
+<div *ngIf="loading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!loading">
+  <div *ngIf="offers?.length > 0; else noOffers" class="offer-grid" style="padding: 0 2rem;">
+    <div class="offer-card" *ngFor="let offer of offers">
+      <div class="offer-image" *ngIf="offer.roomDetails?.imgUrls?.length > 0">
+        <img
+          [src]="offer.roomDetails.imgUrls[0].startsWith('data:image') 
+                  ? offer.roomDetails.imgUrls[0] 
+                  : 'data:image/jpeg;base64,' + offer.roomDetails.imgUrls[0]"
+          alt="Offer Image"
+        />
+      </div>
+
+      <div class="offer-info">
+        <h3>{{ offer.roomDetails.name }}</h3>
+        <p class="location">{{ offer.roomDetails.county }}, {{ offer.roomDetails.city }}</p>
+
+        <div class="price-section">
+          <span class="old-price">
+            {{ 'hotel.price' | translate: { price: offer.roomDetails.price } }}
+          </span>
+          <span class="new-price">
+            {{ 'hotel.price' | translate: { price: offer.price } }}
+          </span>
+        </div>
+
+        <div class="offer-details">
+          <p><strong>{{ 'homeOffers.nights' | translate }}:</strong> {{ offer.nights }}</p>
+          <p><strong>{{ 'homeOffers.description' | translate }}:</strong> {{ offer.description }}</p>
+          <p><strong>{{ 'homeOffers.period' | translate }}:</strong> 
+            {{ offer.startDate | date: 'dd/MM/yyyy' }} - {{ offer.endDate | date: 'dd/MM/yyyy' }}
+          </p>
+        </div>
+
+        <div class="action-buttons" style="margin-top: 1rem;">
+          <button nz-button nzType="default" [routerLink]="['/company/update-offer', offer.id]" style="margin-left: 1rem;">
+            <i nz-icon nzType="edit"></i>
+          </button>
+          <button nz-button nzType="default" nzDanger (click)="deleteOffer(offer.id)" style="margin-left: 1rem;">
+            <i nz-icon nzType="delete"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noOffers>
+    <p class="no-offer">
+      {{ 'noOffers' | translate }}
+    </p>
+  </ng-template>
+</div>

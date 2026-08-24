@@ -1,0 +1,25 @@
+<div class="review-wrapper">
+  <div class="review-container">
+    <h2>{{ 'review.title' | translate }}</h2>
+
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="giveReview()">
+      <div nz-col nzSpan="24">
+        <nz-form-item class="input-item">
+          <nz-form-control nzHasFeedback nzErrorTip="{{ 'validation.invalidName' | translate }}">
+            <textarea nz-input placeholder="{{ 'review.placeholder' | translate }}" formControlName="review"></textarea>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzSpan="24">
+        <nz-form-item class="input-item">
+          <nz-form-control nzHasFeedback nzErrorTip="{{ 'validation.invalidName' | translate }}">
+            <nz-rate formControlName="rating" [nzTooltips]="[ 'review.rating' | translate ]"></nz-rate>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <button class="review-btn">{{ 'review.postButton' | translate }}</button>
+    </form>
+  </div>
+</div>

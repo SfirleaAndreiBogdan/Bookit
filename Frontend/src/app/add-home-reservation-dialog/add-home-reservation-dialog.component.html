@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>{{ 'bookingOffer.confirmDetails' | translate }}</h2>
+
+<mat-dialog-content class="booking-offer-dialog-content">
+  <form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <div class="booking-offer-info">
+      <div class="info-box">
+        <label>{{ 'bookingOffer.name' | translate }}</label>
+        <div>{{ bookingName }}</div>
+  
+        <label>{{ 'bookingOffer.description' | translate }}</label>
+        <div>{{ bookingDescription }}</div>
+      </div>
+    </div>    
+
+    <div class="booking-offer-dates">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">{{ 'bookingOffer.startDate' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <nz-date-picker formControlName="startDate" [nzFormat]="'dd-MM-yyyy'"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24">{{ 'bookingOffer.endDate' | translate }}</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <nz-date-picker formControlName="endDate" [nzFormat]="'dd-MM-yyyy'"></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    
+    <mat-dialog-actions class="booking-offer-actions">
+      <button mat-button (click)="closeDialog()">{{ 'bookingOffer.cancel' | translate }}</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="validateForm.invalid">
+        {{ 'bookingOffer.submit' | translate }}
+      </button>
+    </mat-dialog-actions>
+
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,112 @@
+.sign-up-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh; 
+  background: #fff;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  margin-bottom: 12.68vh;
+  margin-top: 12.68vh;
+}
+
+.sign-up-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #333;
+  overflow: auto;
+}
+
+.sign-up-header h1 {
+  font-size: 2rem;
+  margin-bottom: 20px; 
+  color: #2f54eb;
+}
+
+.nz-form-item {
+  margin-bottom: 15px;
+}
+
+.sign-up-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #001529;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; 
+}
+
+.sign-up-btn:hover {
+  background-color: #002345;
+}
+
+.image {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.profile {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+  display: block;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+button[nz-button][nzShape="circle"] {
+  margin-left: 10px;
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  padding: 10px;
+}
+
+button[nz-button][nzShape="circle"]:hover {
+  background-color: #40a9ff;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;                   
+  padding: 10px 15px;            
+  font-size: 16px;              
+  border: 1px solid #ddd;      
+  border-radius: 5px;           
+  background-color: #fff;       
+  color: #333;                  
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  outline: none;                
+  margin-top: 10px;            
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #2f54eb;        /* Culoare bordură la focus (albastru) */
+  background-color: #f0f8ff;    /* Fundal albastru deschis la focus */
+}

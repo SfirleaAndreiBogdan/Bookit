@@ -1,0 +1,19 @@
+<div class="sign-up-wrapper">
+  <div class="sign-up-container">
+    <div class="sign-up-header">
+      <h1>{{ 'registration.title' | translate }}</h1>
+    </div>
+
+    <button [routerLink]="'/register_client'" class="registration-btn client-btn">
+      <h3>{{ 'registration.clientBtn' | translate }}</h3>
+    </button>
+
+    <button [routerLink]="'/register_company'" class="registration-btn company-btn">
+      <h3>{{ 'registration.companyBtn' | translate }}</h3>
+    </button>
+
+    <button [routerLink]="'/register_owner'" class="registration-btn owner-btn">
+      <h3>{{ 'registration.ownerBtn' | translate }}</h3>
+    </button>
+  </div>
+</div>

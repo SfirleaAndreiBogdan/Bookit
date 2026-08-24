@@ -1,0 +1,70 @@
+<div class="dashboard-container">
+  <div class="summary">
+    <h2>{{ 'dashboard.welcomeBack' | translate: { name: userDet?.firstName } }}</h2>
+
+    <p>{{ 'dashboard.totalBookings' | translate: { count: totalBookings } }}</p>
+    
+    <p *ngIf="upcomingBooking">
+      <i nz-icon nzType="environment"></i> 
+      {{ 'dashboard.upcomingBooking' | translate: { 
+        startDate: upcomingBooking.startDate | date:"dd-MM-yyyy", 
+        endDate: upcomingBooking.endDate | date:"dd-MM-yyyy", 
+        city: upcomingBooking.city, 
+        county: upcomingBooking.county 
+      } }}
+    </p>
+    
+    <p *ngIf="!upcomingBooking">{{ 'dashboard.noUpcomingBooking' | translate }}</p>
+  </div>
+
+  <div class="client-details">
+    <h3><i nz-icon nzType="user"></i> {{ 'dashboard.profileDetails' | translate }}</h3>
+    <p><strong>{{ 'dashboard.fullName' | translate }}:</strong> {{ userDet?.firstName }} {{ userDet?.lastName }}</p>
+    <p><strong>{{ 'dashboard.email' | translate }}:</strong> {{ userDet?.email }}</p>
+    <p><strong>{{ 'dashboard.phone' | translate }}:</strong> {{ userDet?.phone }}</p>
+    <p><strong>{{ 'dashboard.location' | translate }}:</strong> {{ userDet?.county }}, {{ userDet?.city }}</p>
+    <button [routerLink]="['/client/editProfile', userId]" class="edit-profile-btn">
+      <i nz-icon nzType="edit"></i> {{ 'dashboard.editProfile' | translate }}
+    </button>
+  </div>
+
+  <div class="loyalty-progress" *ngIf="loyaltyData">
+    <h3><i nz-icon nzType="trophy"></i> {{ 'dashboard.loyaltyProgress' | translate }}</h3>
+    <p>{{ 'dashboard.currentLevel' | translate: { levelName: translatedLevelName, level: loyaltyData.level } }}</p>
+    <p>{{ 'dashboard.totalPoints' | translate: { points: loyaltyData.points } }}</p>
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="loyaltyData.progressPercentage"></div>
+    </div>
+    <p>{{ 'dashboard.bookingsToNextLevel' | translate: { bookingsToNextLevel: loyaltyData.bookingsToNextLevel } }}</p>
+  </div>
+
+  <div class="discounts">
+    <h3><i nz-icon nzType="gift"></i> {{ 'dashboard.availableCoupons' | translate }}</h3>
+    <div *ngIf="coupons.length > 0; else noCoupons">
+      <ul>
+        <li *ngFor="let coupon of coupons">
+          <div>
+            <strong>{{ coupon.code }}</strong> - {{ 'dashboard.discount' | translate }} <strong>{{ coupon.discount }}%</strong>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noCoupons>
+      <p>{{ 'dashboard.noCoupons' | translate }}</p>
+    </ng-template>
+  </div>
+
+  <div class="recent-bookings">
+    <h3><i nz-icon nzType="clock-circle"></i> {{ 'dashboard.recentBookings' | translate }}</h3>
+    <ul>
+      <li *ngFor="let booking of recentBookings">
+        {{ booking.bookingName }} 
+        {{ 'dashboard.county-city' | translate: { city: booking.city, county: booking.county } }}
+      </li>      
+    </ul>
+  </div>
+
+  <button routerLink="/client/myBookings" class="view-all-bookings-btn">
+    <i nz-icon nzType="file-search"></i> {{ 'dashboard.viewAllBookings' | translate }}
+  </button>
+</div>

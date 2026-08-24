@@ -1,0 +1,40 @@
+<div *ngIf="loading" class="spinner-container">
+  <div class="spinner"></div>
+</div>
+
+<div *ngIf="!loading">
+<h1 class="page-title">{{ 'bookings.yourPosts' | translate }}</h1>
+
+<div class="booking-container">
+  <div *ngIf="bookings && bookings.length > 0; else noBookings" class="booking-grid">
+    <div *ngFor="let booking of bookings" class="booking-card">
+      <div *ngIf="booking.imgUrls">
+        <img [src]="updateImg(booking.imgUrls[0])" alt="{{ booking.name }}" class="booking-image" />
+      </div>
+      <div class="card-content">
+        <h3>{{ booking.name }}</h3>
+        <p class="description">{{ booking.description }}</p>
+        <p><strong>{{ 'bookings.price' | translate }}:</strong> {{ booking.price }} Lei</p>
+        <p><strong>{{ 'bookings.roomType' | translate }}:</strong> {{ 'RoomTypes.'+ booking.roomType | translate }}</p>
+        <p><strong>{{ 'bookings.city' | translate }}:</strong> {{ booking.city }}</p>
+        <p><strong>{{ 'bookings.county' | translate }}:</strong> {{ booking.county }}</p>
+        <p><strong>{{ 'bookings.numberOfAdults' | translate }}:</strong> {{ booking.numberOfAdults }}</p>
+        <p><strong>{{ 'bookings.numberOfChildren' | translate }}:</strong> {{ booking.numberOfChildren }}</p>
+        <p><strong>{{ 'bookings.numberOfRooms' | translate }}:</strong> {{ booking.numberOfRooms }}</p>
+        <p><strong>{{ 'bookings.facilities' | translate }}:</strong> 
+          <ng-container *ngFor="let facility of booking.facilityDetails; let isLast = last">
+            {{ translateFacility(facility.name) }}<span *ngIf="!isLast">, </span>
+          </ng-container>
+        </p>        
+        <button class="btn" [routerLink]="['/client/booking', booking.id]">{{ 'bookings.viewDetails' | translate }}</button>
+        <button [routerLink]="['/company/update', booking.id]" class="btn">{{ 'bookings.update' | translate }}</button>
+        <button (click)="deleteBookingById(booking.id)" class="btn">{{ 'bookings.delete' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noBookings>
+  <p class="no-bookings-message">{{ 'bookings.noBookings' | translate }}</p>
+</ng-template>
+</div>

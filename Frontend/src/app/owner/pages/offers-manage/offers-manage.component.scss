@@ -1,0 +1,88 @@
+.offer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+}
+
+.offer-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.offer-info {
+  padding: 1rem;
+}
+
+.offer-info h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.price-section {
+  margin: 0.5rem 0;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: gray;
+  margin-right: 8px;
+}
+
+.new-price {
+  color: red;
+  font-weight: bold;
+}
+
+.offer-details {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.no-offer {
+  font-size: 1.2rem;
+  color: #666666;
+  text-align: center;
+  margin: 2rem 2rem;
+  font-style: italic;
+  padding: 2.8rem 2rem;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
