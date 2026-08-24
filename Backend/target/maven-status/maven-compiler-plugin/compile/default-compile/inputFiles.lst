@@ -1,22 +1,67 @@
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\componentes\Jwt.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\configuration\CorsConfig.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\configuration\WebSecurity.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\controller\AuthController.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\controller\CompanyController.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\DemoApplication.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\dto\AuthRequest.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\dto\BookingDto.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\dto\SignUpDto.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\dto\UserDto.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\enums\UserRoles.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\exceptions\GlobalExceptionHandler.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\model\Bookings.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\model\User.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\repository\BookingsRepository.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\repository\UserRepository.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\service\authentication\AuthService.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\service\authentication\AuthServiceImplement.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\service\company\CompanyService.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\service\company\CompanyServiceImplement.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\service\jwt\JwtRequestFilter.java
-C:\Users\Sfirlea Andrei\Desktop\licenta\bookit\demo\src\main\java\com\bookit\demo\util\JwtService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\componentes\Jwt.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\configuration\CorsConfig.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\configuration\WebSecurity.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\AuthController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\ClaudeController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\ClientController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\CompanyAndOwnerController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\CouponController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\FacilityController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\HomePageController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\OfferController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\controller\SearchPageController.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\DemoApplication.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\AuthRequest.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\bookingDetailsForClientDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ClaudeCompanyRequest.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ClaudeRequest.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\CouponDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\FacilityDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\OfferDetails.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\OfferDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ReservationDetails.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ReservationDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ReviewBookingResponse.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\ReviewDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\RoomDetails.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\RoomDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\SignUpDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\dto\UserDto.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\enums\FacilityType.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\enums\ReservationStatus.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\enums\ReviewStatus.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\enums\RoomType.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\enums\UserRoles.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\exceptions\GlobalExceptionHandler.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\CountryAndCities.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Coupon.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Facility.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Offer.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Reservation.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Review.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\Room.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\model\User.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\CountryAndCityRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\CouponRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\FacilityRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\OfferRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\ReservationRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\ReviewRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\RoomRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\repository\UserRepository.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\assistantClaude\AssistantClaudeService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\authentication\AuthService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\authentication\AuthServiceImplement.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\client\ClientService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\client\ClientServiceImpl.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\company\CompanyService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\company\CompanyServiceImplement.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\coupon\CouponService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\facility\FacilityService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\jwt\JwtRequestFilter.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\offer\OfferService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\reservations\ReservationService.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\reservations\ReservationServiceImpl.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\search_page\SearchPage.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\service\search_page\SearchPageImpl.java
+C:\bookit\Bookit\Backend\src\main\java\com\bookit\demo\util\JwtService.java
